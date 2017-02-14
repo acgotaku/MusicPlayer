@@ -1,0 +1,61 @@
+{
+  "name": "MusicPlayer",
+  "version": "1.0.0",
+  "description": "Angular 2 Material Music Player",
+  "scripts": {
+  "start": "npm run server:dev",
+  "server:dev": "webpack-dev-server --config config/webpack.dev.js --open --progress --profile --watch --content-base src/",
+  "build:prod": "npm run clean:dist && NODE_ENV=production webpack --config webpack.config.js  --progress --profile --bail",
+  "build": "npm run build:prod",
+  "clean:dist": "npm run rimraf -- dist",
+  "rimraf": "rimraf",
+  "build:dev": "npm run clean:dist && NODE_ENV=development webpack --config webpack.config.js --progress --profile"
+  },
+  "author": "acgotaku",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "~2.4.0",
+    "@angular/compiler": "~2.4.0",
+    "@angular/core": "~2.4.0",
+    "@angular/forms": "~2.4.0",
+    "@angular/http": "~2.4.0",
+    "@angular/platform-browser": "~2.4.0",
+    "@angular/platform-browser-dynamic": "~2.4.0",
+    "@angular/router": "~3.4.0",
+    "@angular/material": "~2.0.0-beta.1",
+    "angular-in-memory-web-api": "~0.2.4",
+    "core-js": "^2.4.1",
+    "rxjs": "5.0.1",
+    "zone.js": "^0.7.4"
+  },
+  "devDependencies": {    
+    "@types/node": "^6.0.45",
+    "angular2-template-loader": "^0.6.0",
+    "awesome-typescript-loader": "^3.0.0-beta.18",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.5",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.16.1",
+    "null-loader": "^0.1.1",
+    "phantomjs-prebuilt": "^2.1.7",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "style-loader": "^0.13.1",
+    "typescript": "~2.0.10",
+    "webpack": "2.2.0",
+    "webpack-dev-server": "2.2.0-rc.0",
+    "webpack-merge": "^2.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acgotaku/MusicPlayer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/acgotaku/MusicPlayer/issues"
+  },
+  "engines": {
+    "node": ">= 4.2.1",
+    "npm": ">= 3"
+  }
+}
