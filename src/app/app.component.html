@@ -1,0 +1,31 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="flex-container header">
+    <div class="flex-item title" fxLayoutAlign="center center">Music Player</div>
+    <div fxLayoutAlign="center center" class="flex-item volume">
+        <a class="volume_down" href="javascript:void(0);">
+            <md-icon class="icon">volume_down</md-icon>
+        </a>
+        <md-slider [(ngModel)]="value"></md-slider>
+        <a class="volume_up" href="javascript:void(0);">
+            <md-icon class="icon">volume_up</md-icon>
+        </a>
+    </div>
+    <div fxLayoutAlign="center center" class="flex-item playback">
+        <a class="skip_previous" href="javascript:void(0);">
+            <md-icon class="icon">skip_previous</md-icon>
+        </a>
+        <a class="play_arrow" href="javascript:void(0);">
+            <md-icon class="icon">play_arrow</md-icon>
+        </a>
+        <a class="skip_next" href="javascript:void(0);">
+            <md-icon class="icon">skip_next</md-icon>
+        </a>
+    </div>
+    <div class="flex-item search">
+        <md-input placeholder="search music">
+            <span md-prefix>
+          <i class="material-icons icon">search</i>
+          &nbsp;
+        </span>
+        </md-input>
+    </div>
+</div>
