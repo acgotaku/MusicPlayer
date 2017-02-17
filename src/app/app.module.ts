@@ -8,7 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
-
+import { PlayerComponent } from './player.component';
 
 @NgModule({
   imports: [
@@ -19,7 +19,8 @@ import { AppComponent } from './app.component';
     MaterialModule.forRoot()
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    PlayerComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
