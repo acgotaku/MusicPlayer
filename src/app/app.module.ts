@@ -9,7 +9,7 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './player.component';
-
+import { MusicService } from './music.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -22,7 +22,7 @@ import { PlayerComponent } from './player.component';
     AppComponent,
     PlayerComponent
   ],
-  providers: [],
+  providers: [MusicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

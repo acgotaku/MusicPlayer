@@ -2,11 +2,11 @@
     <div fxLayout="row" fxLayoutAlign="center center" class="player">
         <div class="flex-item title" fxLayoutAlign="center center">Music Player</div>
         <div fxLayoutAlign="center center" class="flex-item volume">
-            <a class="volume_down" href="javascript:void(0);">
+            <a class="volume_down" href="javascript:void(0);" (click)="volumeDown()">
                 <md-icon class="icon">volume_down</md-icon>
             </a>
-            <md-slider [(ngModel)]="value"></md-slider>
-            <a class="volume_up" href="javascript:void(0);">
+            <md-slider [(ngModel)]="volume"  (click)="setVolume(volume)" min="0" max="1" step="0.1"></md-slider>
+            <a class="volume_up" href="javascript:void(0);" (click)="volumeUp()">
                 <md-icon class="icon">volume_up</md-icon>
             </a>
         </div>
@@ -14,7 +14,7 @@
             <a class="skip_previous" href="javascript:void(0);">
                 <md-icon class="icon">skip_previous</md-icon>
             </a>
-            <a class="play_arrow" href="javascript:void(0);">
+            <a class="play_arrow" href="javascript:void(0);" (click)="pause()">
                 <md-icon class="icon">play_arrow</md-icon>
             </a>
             <a class="skip_next" href="javascript:void(0);">
@@ -34,20 +34,20 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="flex-container player-info">
     <div fxLayoutAlign="space-between center">
         <div class="flex-item start-time">
-            <span>0:00</span>
+            <span>{{elapsed}}</span>
         </div>
         <div class="flex-item music-title">
             <span>Hello World</span>
         </div>
         <div class="flex-item end-time">
-            <span>2:22</span>
+            <span>{{duration}}</span>
         </div>
     </div>
 </div>
 <div fxLayout="row" fxLayoutAlign="center center" class=" flex-container player-progess">
     <div fxLayoutAlign="center center">
         <div class="flex-item progress-wrap">
-            <md-slider [(ngModel)]="value" class="progress-bar"></md-slider>
+            <md-slider [(ngModel)]="progress" (click)="updateProgress()" min="0" max="1" step="0.01" class="progress-bar"></md-slider>
         </div>
     </div>
 </div>
