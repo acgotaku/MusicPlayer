@@ -15,7 +15,8 @@
                 <md-icon class="icon">skip_previous</md-icon>
             </a>
             <a class="play_arrow" href="javascript:void(0);" (click)="pause()">
-                <md-icon class="icon">play_arrow</md-icon>
+                <md-icon class="icon" *ngIf="!paused">pause</md-icon>
+                <md-icon class="icon" *ngIf="paused">play_arrow</md-icon>
             </a>
             <a class="skip_next" href="javascript:void(0);">
                 <md-icon class="icon">skip_next</md-icon>

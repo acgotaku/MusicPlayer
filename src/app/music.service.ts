@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
+import { ApiService } from './api.service';
 @Injectable()
 export class MusicService {
   audio: any;
-  paused = false;
-  constructor(
 
+  constructor(
+    private apiService: ApiService
   ) {
     this.audio = new Audio();
   }
@@ -13,20 +14,16 @@ export class MusicService {
     this.audio.src = url;
     this.audio.load();
   }
-
+  getPlayList():void{
+    this.apiService.getFMList().then(response => {
+      console.log(response);
+    });
+  }
   play(url: string): void {
     this.load(url);
     this.audio.play()
   }
-  togglePause(): void {
-    if (this.audio.paused) {
-      this.paused = false;
-      this.audio.play()
-    } else {
-      this.paused = true;
-      this.audio.pause()
-    }
-  }
+
   setVolume(volume: number): void {
     this.audio.volume = volume;
   }

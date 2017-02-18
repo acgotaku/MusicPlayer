@@ -10,18 +10,21 @@ export class PlayerComponent implements OnInit {
   title = 'Music Player';
   progress = 0;
   volume = 0.5;
-  elapsed:string;
-  duration:string;
-  url = 'http://m10.music.126.net/20170217150845/3274b26b4056dd095173c482f02bfc8b/ymusic/f23e/d92f/9bf2/99d3022baa72812d1ff395849164bae7.mp3';
+  paused = true;
+  elapsed: string;
+  duration: string;
+  url = 'http://112.29.201.99/m10.music.126.net/20170218112127/d5c4218fe8996bd23ba7044d0495c4be/ymusic/f23e/d92f/9bf2/99d3022baa72812d1ff395849164bae7.mp3?wshc_tag=0&wsts_tag=58a7b7db&wsid_tag=701ae744&wsiphost=ipdbm';
   constructor(
     private musicService: MusicService
   ) { }
   ngOnInit(): void {
-     this.musicService.play(this.url);
+    // this.musicService.getPlayList();
+    this.musicService.load(this.url);
     // this.musicService.audio.onended = this.handleEnded.bind(this);
+    this.musicService.audio.onloadedmetadata =this.handleTimeUpdate.bind(this);
     this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
   }
-  handleTimeUpdate(e:any) {
+  handleTimeUpdate(e: any) {
     const elapsed = this.musicService.audio.currentTime;
     const duration = this.musicService.audio.duration;
     this.progress = elapsed / duration;
@@ -45,7 +48,13 @@ export class PlayerComponent implements OnInit {
     this.musicService.setVolume(this.volume);
   }
   pause(): void {
-    this.musicService.togglePause();
+    if (this.paused) {
+      this.paused = false;
+      this.musicService.audio.play();
+    } else {
+      this.paused = true;
+      this.musicService.audio.pause();
+    }
   }
   updateProgress(): void {
     this.musicService.audio.currentTime = this.progress * this.musicService.audio.duration;
