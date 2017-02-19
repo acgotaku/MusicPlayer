@@ -111,3 +111,28 @@
     width: 60%;
     text-align: center;
 }
+.player-list-header  > div {
+    background: #e6dbdb;
+    height: 30px;
+    font-size: 18px;
+    line-height: 30px;
+}
+.player-list-header .flex-item{
+    width: 30%;
+    text-align: center;
+}
+.player-list  > div {
+    background: #eee;
+    height: 30px;
+    font-size: 16px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.player-list  > div:hover {
+    background: #e6dbdb;
+    cursor: pointer;
+}
+.player-list .flex-item{
+    width: 30%;
+    text-align: center;
+}
