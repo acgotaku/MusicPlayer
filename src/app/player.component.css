@@ -131,10 +131,12 @@
 }
 
 .player-list:hover {
-    background: #e6dbdb;
+    background: #c2c7dc;
     cursor: pointer;
 }
-
+.active{
+    background: #dcdee6;
+}
 .player-list .flex-item {
     width: 30%;
     text-align: center;

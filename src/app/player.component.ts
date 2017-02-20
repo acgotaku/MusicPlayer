@@ -18,7 +18,7 @@ export class PlayerComponent implements OnInit {
   duration: string;
   music: Music[];
   index: number;
-  song: Music;
+  selectedSong: Music;
   url = 'http://112.29.201.99/m10.music.126.net/20170218112127/d5c4218fe8996bd23ba7044d0495c4be/ymusic/f23e/d92f/9bf2/99d3022baa72812d1ff395849164bae7.mp3?wshc_tag=0&wsts_tag=58a7b7db&wsid_tag=701ae744&wsiphost=ipdbm';
   constructor(
     private musicService: MusicService
@@ -38,7 +38,7 @@ export class PlayerComponent implements OnInit {
     console.log(progress);
   }
   setMusic(song: Music, index: number): void {
-    this.song = song;
+    this.selectedSong = song;
     this.index = index;
     this.playMusic(song);
   }
@@ -51,13 +51,13 @@ export class PlayerComponent implements OnInit {
   }
   playNext(): void {
     this.index =(this.index+1)%this.music.length;
-    this.song =this.music[this.index];
-    this.playMusic(this.song);
+    this.selectedSong =this.music[this.index];
+    this.playMusic(this.selectedSong);
   }
   playPrev(): void {
     this.index =(this.index-1)%this.music.length;
-    this.song =this.music[this.index];
-    this.playMusic(this.song);
+    this.selectedSong =this.music[this.index];
+    this.playMusic(this.selectedSong);
   }
   handleTimeUpdate(e: any) :void {
     const elapsed = this.musicService.audio.currentTime;

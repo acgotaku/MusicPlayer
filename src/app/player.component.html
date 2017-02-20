@@ -36,7 +36,7 @@
                 <span>{{elapsed}}&nbsp;</span>
             </div>
             <div class="flex-item music-title">
-                <span>{{song?.name}} &nbsp;</span>
+                <span>{{selectedSong?.name}} &nbsp;</span>
             </div>
             <div class="flex-item end-time">
                 <span>{{duration}}&nbsp;</span>
@@ -60,7 +60,7 @@
                 Album
             </div>
     </div>
-    <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" (click)="setMusic(song,i)">
+    <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" [class.active] = "song === selectedSong" (click)="setMusic(song,i)">
             <div class="flex-item">
                 {{song.name}}
             </div>
