@@ -3,17 +3,15 @@
 }
 
 .flex-container > div {
-    width: 973px;
+    max-width: 55%;
+    min-width:980px;
 }
 
 .player {
     margin-top: 20px;
-}
-
-.player > div {
     height: 65px;
-    background-color: #E14747;
     text-align: center;
+    background-color: #E14747;
 }
 
 .player > div:not(:last-child):after {
@@ -37,7 +35,9 @@
 .icon {
     color: white;
 }
-
+.volume{
+    margin-bottom: 3px;
+}
 .playback .icon {
     line-height: 35px;
 }
@@ -83,23 +83,21 @@
     background-clip: padding-box;
 }
 
-.progress-wrap {
-    height: 30px;  
-}
-.player-progess >div{
+.player-progess {
     background: #eee;
-}
-.progress-bar {
-    height: 20px;
-    width: 973px;
-    margin-top: -10px;
 }
 
-.player-info > div {
-    margin: 0 8px;
+.progress-bar {
+    height: 30px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.player-info {
+    background: #eee;
     font-size: 20px;
     line-height: 30px;
-    background: #eee;
+    border-bottom: 1px solid rgba(28, 27, 27, 0.2);
 }
 
 .start-time,
@@ -111,28 +109,33 @@
     width: 60%;
     text-align: center;
 }
-.player-list-header  > div {
+
+.player-list-header > div {
     background: #e6dbdb;
     height: 30px;
     font-size: 18px;
     line-height: 30px;
 }
-.player-list-header .flex-item{
+
+.player-list-header .flex-item {
     width: 30%;
     text-align: center;
 }
-.player-list  > div {
+
+.player-list {
     background: #eee;
     height: 30px;
     font-size: 16px;
     line-height: 30px;
     cursor: pointer;
 }
-.player-list  > div:hover {
+
+.player-list:hover {
     background: #e6dbdb;
     cursor: pointer;
 }
-.player-list .flex-item{
+
+.player-list .flex-item {
     width: 30%;
     text-align: center;
 }

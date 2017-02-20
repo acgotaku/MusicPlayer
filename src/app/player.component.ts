@@ -25,9 +25,9 @@ export class PlayerComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.music = [
-      { name: 'tsubasa', mp3Url: 'http://cc.stream.qqmusic.qq.com/C200003RHiW11PuozU.m4a?vkey=F234E35724E1C43D13A338E3130840D81B3730B2DA6E22E1796DD83987FB59D57711F6E098602A1E801AF3B4BE78357F5304A47ED22D678B&fromtag=0&guid=780782017', imgUrl: '' },
-      { name: '女神のKISS', mp3Url: 'http://cc.stream.qqmusic.qq.com/C200002iWvsC1BA2lY.m4a?vkey=9E2A4686D68499DA16B9E2AFFBFAF653171FE0D16B119034EDC01245EE81BCF3745BEADA028670FAE155343376192C2F9C5E2A263A507878&fromtag=0&guid=780782017', imgUrl: '' },
-      { name: '恋', mp3Url: 'http://cc.stream.qqmusic.qq.com/C200001kLQTa3rD7VD.m4a?vkey=E98EF7A9F2A11E821E15795E4228C87B3FFD40F467568C4586665CF33501B0007146D4351D8003410109C60671D4E4A8A56D9B3C79DFED6E&fromtag=0&guid=780782017', imgUrl: '' }];
+      { name: 'tsubasa', mp3Url: 'http://cc.stream.qqmusic.qq.com/C200003RHiW11PuozU.m4a?vkey=953990038ED8DD4114FD2255CA19023D5A69653ADF33EA4B98D747F00369497CB2EA5EAC055E9C751C49AFCCCD599C2EB3BC98423EF5CD4E&fromtag=0&guid=780782017', imgUrl: '' },
+      { name: '女神のKISS', mp3Url: 'http://cc.stream.qqmusic.qq.com/C200002iWvsC1BA2lY.m4a?vkey=7E11E2EFFE8E70DE2FA56006E1E0F36C618EEAE7B4EE7905977BC55E7C966F55FEE07DDE2FADDA42E8C2CD7534EF188DAA169EE1B963E707&fromtag=0&guid=780782017', imgUrl: '' },
+      { name: '恋', mp3Url: 'http://cc.stream.qqmusic.qq.com/C2000005QcgJ07urCy.m4a?vkey=91B09F439A51C889658A474DBDD41FE51D7CA531905C72FE46899AB6C890556078B513AD14FBE8B6D7A2E39F84A83CD6D61D8FCDB8688B4A&fromtag=0&guid=780782017', imgUrl: '' }];
     // this.musicService.getPlayList();
     // this.musicService.load(this.url);
     // this.musicService.audio.onended = this.handleEnded.bind(this);
@@ -47,6 +47,7 @@ export class PlayerComponent implements OnInit {
     this.paused = false;
     this.musicService.audio.onloadedmetadata = this.handleTimeUpdate.bind(this);
     this.musicService.audio.ontimeupdate = this.handleTimeUpdate.bind(this);
+    this.musicService.audio.onended = this.handleEnded.bind(this);
   }
   playNext(): void {
     this.index =(this.index+1)%this.music.length;
@@ -58,12 +59,15 @@ export class PlayerComponent implements OnInit {
     this.song =this.music[this.index];
     this.playMusic(this.song);
   }
-  handleTimeUpdate(e: any) {
+  handleTimeUpdate(e: any) :void {
     const elapsed = this.musicService.audio.currentTime;
     const duration = this.musicService.audio.duration || 0;
     this.progress = elapsed / duration;
     this.elapsed = this.musicService.formatTime(elapsed);
     this.duration = this.musicService.formatTime(duration);
+  }
+  handleEnded(e: any):void{
+      this.playNext();
   }
   volumeUp(): void {
     if (this.volume < 1) {

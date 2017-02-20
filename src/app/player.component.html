@@ -1,11 +1,11 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="flex-container">
-    <div fxLayout="row" fxLayoutAlign="center center" class="player">
+<div fxLayout="column" fxLayoutAlign="center center" class="flex-container">
+    <div fxLayout="row" fxLayoutAlign="center stretch" class="player">
         <div class="flex-item title" fxLayoutAlign="center center">Music Player</div>
         <div fxLayoutAlign="center center" class="flex-item volume">
             <a class="volume_down" href="javascript:void(0);" (click)="volumeDown()">
                 <md-icon class="icon">volume_down</md-icon>
             </a>
-            <md-slider [(ngModel)]="volume"  (click)="setVolume(volume)" min="0" max="1" step="0.1"></md-slider>
+            <md-slider [(ngModel)]="volume"  (click)="setVolume(volume)" min="0" max="1" step="0.1" class="volume"></md-slider>
             <a class="volume_up" href="javascript:void(0);" (click)="volumeUp()">
                 <md-icon class="icon">volume_up</md-icon>
             </a>
@@ -31,52 +31,46 @@
             </md-input>
         </div>
     </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="center center" class="flex-container player-info">
-    <div fxLayoutAlign="space-between center">
-        <div class="flex-item start-time">
-            <span>{{elapsed}}&nbsp;</span>
-        </div>
-        <div class="flex-item music-title">
-            <span>{{song?.name}} &nbsp;</span>
-        </div>
-        <div class="flex-item end-time">
-            <span>{{duration}}</span>
-        </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="player-info">
+            <div class="flex-item start-time">
+                <span>{{elapsed}}&nbsp;</span>
+            </div>
+            <div class="flex-item music-title">
+                <span>{{song?.name}} &nbsp;</span>
+            </div>
+            <div class="flex-item end-time">
+                <span>{{duration}}&nbsp;</span>
+            </div>
+        
     </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="center center" class=" flex-container player-progess">
-    <div fxLayoutAlign="center center">
-        <div class="flex-item progress-wrap">
-            <md-slider [(ngModel)]="progress" (change)="updateProgress()" min="0" max="1" step="0.01" class="progress-bar"></md-slider>
-        </div>
+    <div fxLayout="row" fxLayoutAlign="center center" class="player-progess">
+            <div class="flex-item" fxFlexFill>
+                <md-slider [(ngModel)]="progress" (change)="updateProgress()" min="0" max="1" step="0.01" class="progress-bar"></md-slider>
+            </div>
     </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="center center" class=" flex-container player-list-header">
-    <div fxLayoutAlign="space-between center">
-        <div class="flex-item">
-            Track
-        </div>
-        <div class="flex-item">
-            Artist
-        </div>
-        <div class="flex-item">
-            Album
-        </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="player-list-header">
+        
+            <div class="flex-item">
+                Track
+            </div>
+            <div class="flex-item">
+                Artist
+            </div>
+            <div class="flex-item">
+                Album
+            </div>
     </div>
-</div>
-<div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="center center" class=" flex-container player-list">
-    <div fxLayoutAlign="space-between center" (click)="setMusic(song,i)">
-    
-        <div class="flex-item">
-            {{song.name}}
+    <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" (click)="setMusic(song,i)">
+            <div class="flex-item">
+                {{song.name}}
+            </div>
+            <div class="flex-item">
+                Unknown Artist
+            </div>
+            <div class="flex-item">
+                Unknown Album
+            </div>
+          
         </div>
-        <div class="flex-item">
-            Unknown Artist
-        </div>
-        <div class="flex-item">
-            Unknown Album
-        </div>
-      
-    </div>
+   
 </div>
