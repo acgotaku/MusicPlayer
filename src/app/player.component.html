@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="flex-item search">
-            <md-input placeholder="search music">
+            <md-input placeholder="search music"  #keyword (keyup.enter)="searchMusic(keyword.value)">
                 <span md-prefix>
           <i class="material-icons icon">search</i>
           &nbsp;
@@ -65,10 +65,10 @@
                 {{song.name}}
             </div>
             <div class="flex-item">
-                Unknown Artist
+                {{song.artist}}
             </div>
-            <div class="flex-item">
-                Unknown Album
+            <div class="flex-item"  [attr.title] ="song.album">
+                {{song.album}}
             </div>
           
         </div>

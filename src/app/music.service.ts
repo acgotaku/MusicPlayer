@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Music } from './music';
+
 import { ApiService } from './api.service';
 @Injectable()
 export class MusicService {
@@ -14,10 +16,11 @@ export class MusicService {
     this.audio.src = url;
     this.audio.load();
   }
-  getPlayList():void{
-    this.apiService.getFMList().then(response => {
-      console.log(response);
-    });
+  getPlayList(keyword:string):Promise<Music[]>{
+    return this.apiService.getMusicList(keyword);
+  }
+  getTrackUrl(id:number):Promise<string>{
+    return this.apiService.getTrackUrl(id);
   }
   play(url: string): void {
     this.load(url);

@@ -24,6 +24,7 @@
 
 .flex-item {
     padding: 0 20px;
+
 }
 
 .title {
@@ -139,5 +140,7 @@
 }
 .player-list .flex-item {
     width: 30%;
+    height: 30px;
     text-align: center;
+    text-overflow: ellipsis;
 }
