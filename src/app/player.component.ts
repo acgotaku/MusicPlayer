@@ -46,7 +46,7 @@ export class PlayerComponent implements OnInit {
 
   }
   searchMusic(keyword: string): void {
-    this.keyword =keyword;
+    this.keyword = keyword;
     this.musicService.getPlayList(keyword, this.source).then(musicList => this.music = musicList);
   }
   setMusic(song: Music, index: number): void {
@@ -55,7 +55,7 @@ export class PlayerComponent implements OnInit {
     this.playMusic(song);
   }
   playMusic(song: Music): void {
-    this.musicService.getTrackUrl(song.id,this.source).then(url => {
+    this.musicService.getTrackUrl(song.id, this.source).then(url => {
       this.musicService.play(url);
     });
     this.paused = false;
@@ -84,19 +84,22 @@ export class PlayerComponent implements OnInit {
     this.playNext();
   }
   volumeUp(): void {
-    if (this.volume < 1) {
-      this.volume = this.volume + 0.1;
-      this.musicService.setVolume(this.volume);
+    this.volume = this.volume + 0.1;
+    if (this.volume > 1) {
+      this.volume = 1;
     }
-
+    this.musicService.setVolume(this.volume);
   }
   volumeDown(): void {
-    if (this.volume > 0) {
-      this.volume = this.volume - 0.1;
-      this.musicService.setVolume(this.volume);
+    this.volume = this.volume - 0.1;
+    if (this.volume < 0) {
+
+      this.volume = 0;
     }
+    this.musicService.setVolume(this.volume);
   }
-  setVolume(): void {
+  setVolume(volume: number): void {
+    this.volume = volume;
     this.musicService.setVolume(this.volume);
   }
   updateProgress(): void {
