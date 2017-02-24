@@ -5,7 +5,7 @@
             <a class="volume_down" href="javascript:void(0);" (click)="volumeDown()">
                 <md-icon class="icon">volume_down</md-icon>
             </a>
-            <md-slider [(ngModel)]="volume"  (click)="setVolume(volume)" min="0" max="1" step="0.1" class="volume"></md-slider>
+            <md-slider [(ngModel)]="volume" (click)="setVolume(volume)" min="0" max="1" step="0.1" class="volume"></md-slider>
             <a class="volume_up" href="javascript:void(0);" (click)="volumeUp()">
                 <md-icon class="icon">volume_up</md-icon>
             </a>
@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="flex-item search">
-            <md-input placeholder="search music"  #keyword (keyup.enter)="searchMusic(keyword.value)">
+            <md-input placeholder="search music" #keyword (keyup.enter)="searchMusic(keyword.value)">
                 <span md-prefix>
           <i class="material-icons icon">search</i>
           &nbsp;
@@ -32,45 +32,73 @@
         </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="player-info">
-            <div class="flex-item start-time">
-                <span>{{elapsed}}&nbsp;</span>
-            </div>
-            <div class="flex-item music-title">
-                <span>{{selectedSong?.name}} &nbsp;</span>
-            </div>
-            <div class="flex-item end-time">
-                <span>{{duration}}&nbsp;</span>
-            </div>
-        
+        <div class="flex-item start-time">
+            <span>{{elapsed}}&nbsp;</span>
+        </div>
+        <div class="flex-item music-title">
+            <span>{{selectedSong?.name}} &nbsp;</span>
+        </div>
+        <div class="flex-item end-time">
+            <span>{{duration}}&nbsp;</span>
+        </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="player-progess">
-            <div class="flex-item" fxFlexFill>
-                <md-slider [(ngModel)]="progress" (change)="updateProgress()" min="0" max="1" step="0.01" class="progress-bar"></md-slider>
-            </div>
+        <div class="flex-item" fxFlexFill>
+            <md-slider [(ngModel)]="progress" (change)="updateProgress()" min="0" max="1" step="0.01" class="progress-bar"></md-slider>
+        </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="player-list-header">
-        
-            <div class="flex-item">
-                Track
-            </div>
-            <div class="flex-item">
-                Artist
-            </div>
-            <div class="flex-item">
-                Album
-            </div>
-    </div>
-    <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" [class.active] = "song === selectedSong" (click)="setMusic(song,i)">
-            <div class="flex-item">
-                {{song.name}}
-            </div>
-            <div class="flex-item">
-                {{song.artist}}
-            </div>
-            <div class="flex-item"  [attr.title] ="song.album">
-                {{song.album}}
-            </div>
-          
+        <div class="flex-item">
+            Track
         </div>
-   
+        <div class="flex-item">
+            Artist
+        </div>
+        <div class="flex-item">
+            Album
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="player-list-header">
+        <md-tab-group fxFlexFill #tab (selectedIndexChange)="setSource(tab.selectedIndex)">
+            <md-tab label="网易">
+                <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" [class.active]="song === selectedSong" (click)="setMusic(song,i)">
+                    <div class="flex-item">
+                        {{song.name}}
+                    </div>
+                    <div class="flex-item">
+                        {{song.artist}}
+                    </div>
+                    <div class="flex-item" [attr.title]="song.album">
+                        {{song.album}}
+                    </div>
+                </div>
+            </md-tab>
+            <md-tab label="QQ">
+                <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" [class.active]="song === selectedSong" (click)="setMusic(song,i)">
+                    <div class="flex-item">
+                        {{song.name}}
+                    </div>
+                    <div class="flex-item">
+                        {{song.artist}}
+                    </div>
+                    <div class="flex-item" [attr.title]="song.album">
+                        {{song.album}}
+                    </div>
+                </div>
+            </md-tab>
+            <md-tab label="虾米">
+                <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" [class.active]="song === selectedSong" (click)="setMusic(song,i)">
+                    <div class="flex-item">
+                        {{song.name}}
+                    </div>
+                    <div class="flex-item">
+                        {{song.artist}}
+                    </div>
+                    <div class="flex-item" [attr.title]="song.album">
+                        {{song.album}}
+                    </div>
+                </div>
+            </md-tab>
+        </md-tab-group>
+    </div>
 </div>

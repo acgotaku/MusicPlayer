@@ -16,11 +16,11 @@ export class MusicService {
     this.audio.src = url;
     this.audio.load();
   }
-  getPlayList(keyword:string):Promise<Music[]>{
-    return this.apiService.getMusicList(keyword);
+  getPlayList(keyword:string,source:string):Promise<Music[]>{
+    return this.apiService.getMusicList(keyword,source);
   }
-  getTrackUrl(id:number):Promise<string>{
-    return this.apiService.getTrackUrl(id);
+  getTrackUrl(id:number,source:string):Promise<string>{
+    return this.apiService.getTrackUrl(id,source);
   }
   play(url: string): void {
     this.load(url);
