@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </md-tab>
-            <md-tab label="QQ">
+            <md-tab label="QQ音乐">
                 <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" [class.active]="song === selectedSong" (click)="setMusic(song,i)">
                     <div class="flex-item">
                         {{song.name}}
