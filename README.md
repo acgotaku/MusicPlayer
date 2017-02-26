@@ -6,13 +6,13 @@
 
 ###  安装
 
-`npm install`
+		npm install
 
 ### 开发
 
-`npm start`
+		npm start
 
 ### 发布
 
 
-`npm run build`
+		npm run build
