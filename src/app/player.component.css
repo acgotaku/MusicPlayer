@@ -2,9 +2,17 @@
     font-size: 14px;
 }
 
-.flex-container > div, .player-list-header{
+.flex-container > div,
+.player-list-header {
     max-width: 55%;
-    min-width:980px;
+    min-width: 980px;
+}
+
+@media screen and (max-width: 599px) {
+    .flex-container > div,
+    .player-list-header {
+        width: 90%;
+    }
 }
 
 .player {
@@ -24,7 +32,6 @@
 
 .flex-item {
     padding: 0 20px;
-
 }
 
 .title {
@@ -36,9 +43,11 @@
 .icon {
     color: white;
 }
-.volume{
+
+.volume {
     margin-bottom: 3px;
 }
+
 .playback .icon {
     line-height: 35px;
 }
@@ -135,9 +144,11 @@
     background: #c2c7dc;
     cursor: pointer;
 }
-.active{
+
+.active {
     background: #dcdee6;
 }
+
 .player-list .flex-item {
     width: 30%;
     max-width: 320px;

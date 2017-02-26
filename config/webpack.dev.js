@@ -9,7 +9,7 @@ module.exports = function (metadata) {
 
       output: {
           path: helpers.root('dist'),
-          publicPath: 'http://localhost:8080/',
+        
           filename: '[name].js',
           chunkFilename: '[id].chunk.js'
       },
@@ -19,6 +19,8 @@ module.exports = function (metadata) {
       ],
 
       devServer: {
+          port: 8080,
+          host: "0.0.0.0",
           historyApiFallback: true,
           stats: 'minimal'
       }
