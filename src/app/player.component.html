@@ -23,12 +23,13 @@
             </a>
         </div>
         <div class="flex-item search">
-            <md-input placeholder="search music" #keyword (keyup.enter)="searchMusic(keyword.value)">
-                <span md-prefix>
+            <md-input-container>
+        <span mdPrefix>
           <i class="material-icons icon">search</i>
           &nbsp;
         </span>
-            </md-input>
+                <input mdInput placeholder="Search" #keyword (keyup.enter)="searchMusic(keyword.value)" >
+            </md-input-container>
         </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="player-info">

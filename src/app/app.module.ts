@@ -17,7 +17,7 @@ import { ApiService } from './api.service';
     HttpModule,
     JsonpModule,
     FlexLayoutModule,
-    MaterialModule.forRoot()
+    MaterialModule
   ],
   declarations: [
     AppComponent,
