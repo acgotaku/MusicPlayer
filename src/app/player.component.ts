@@ -4,6 +4,8 @@ import { MusicService } from './music.service';
 
 import { Music } from './music';
 
+import { PlayList } from './playlist';
+
 @Component({
   selector: 'music-player',
   templateUrl: './player.component.html',
@@ -19,6 +21,7 @@ export class PlayerComponent implements OnInit {
   duration: string;
   source = 'netease';
   music: Music[];
+  playLists: PlayList[];
   index: number;
   selectedSong: Music;
   constructor(
@@ -34,20 +37,35 @@ export class PlayerComponent implements OnInit {
   setSource(index: number): void {
     switch (index) {
       case 1:
-        this.source = 'qq';
+        this.source = 'netease';
+        this.searchPlayList(this.keyword);
         break;
       case 2:
+        this.source = 'qq';
+        this.searchMusic(this.keyword);
+        break;
+      case 3:
         this.source = 'xiami';
+        this.searchMusic(this.keyword);
         break;
       default:
         this.source = 'netease';
+        this.searchMusic(this.keyword);
     }
-    this.searchMusic(this.keyword);
 
   }
   searchMusic(keyword: string): void {
     this.keyword = keyword;
-    this.musicService.getPlayList(keyword, this.source).then(musicList => this.music = musicList);
+    this.musicService.getMusicList(keyword, this.source).then(musicList => this.music = musicList);
+  }
+  searchPlayList(keyword: string): void {
+    this.music=[];
+    this.keyword = keyword;
+    this.musicService.searchPlayList(keyword, this.source).then(playLists => this.playLists = playLists);
+  }
+  getPlayList(playlist:PlayList,index:number):void{
+    this.musicService.getPlayList(playlist.id, this.source).then(musicList => this.music = musicList);
+    this.playLists=[];
   }
   setMusic(song: Music, index: number): void {
     this.selectedSong = song;
@@ -56,6 +74,10 @@ export class PlayerComponent implements OnInit {
   }
   playMusic(song: Music): void {
     this.musicService.getTrackUrl(song.id, this.source).then(url => {
+      if (url ==""){
+        this.playNext();
+        return;
+      }
       this.musicService.play(url);
     });
     this.paused = false;

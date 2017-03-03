@@ -74,6 +74,30 @@
                     </div>
                 </div>
             </md-tab>
+            <md-tab label="网易歌单">
+                <div *ngFor="let playlist of playLists; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" (click)="getPlayList(playlist,i)">
+                    <div class="flex-item">
+                        {{playlist.name}}
+                    </div>
+                    <div class="flex-item">
+                         &nbsp;
+                    </div>
+                    <div class="flex-item">
+                         &nbsp;
+                    </div>
+                </div>
+                <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" [class.active]="song === selectedSong" (click)="setMusic(song,i)">
+                    <div class="flex-item">
+                        {{song.name}}
+                    </div>
+                    <div class="flex-item">
+                        {{song.artist}}
+                    </div>
+                    <div class="flex-item" [attr.title]="song.album">
+                        {{song.album}}
+                    </div>
+                </div>
+            </md-tab>
             <md-tab label="QQ音乐">
                 <div *ngFor="let song of music; let i=index" fxLayout="row" fxLayoutAlign="space-between center" class="player-list" [class.active]="song === selectedSong" (click)="setMusic(song,i)">
                     <div class="flex-item">
